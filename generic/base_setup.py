@@ -11,10 +11,13 @@ from pyjavaproperties import Properties
 
 class Base_SetUp:
 
+    CONFIG_PATH="config.properties"
+    XL_PATH="test_data/input.xlsx"
+
     @pytest.fixture(autouse=True)
     def precondition(self):
         ppt_obj = Properties()
-        ppt_obj.load(open("../config.properties"))
+        ppt_obj.load(open(self.CONFIG_PATH))
         grid=ppt_obj["GRID"]
         grid_url=ppt_obj["GRID_URL"]
         browser=ppt_obj["BROWSER"]
